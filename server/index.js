@@ -16,6 +16,7 @@ const io = require("socket.io")(server);
 app.use(express.json);
 
 //db connection string
+// console.log(process.env.DB_PASSWORD);
 const DB = `mongodb+srv://iniwillie10:${process.env.DB_PASSWORD}@cluster0.mvh1bm6.mongodb.net/myfirstcollection`;
 
 io.on("connection", (socket) => {
@@ -118,10 +119,11 @@ io.on("connection", (socket) => {
     try {
       //get game rrom
       let room = await roomModel.findById(roomId);
+
       //find a player that matches the winnersocketId
-      let player = room.players.find((player) => {
-        player.socketID == winnerSocketId;
-      });
+      let player = room.players.find(
+        (Eachplayer) => Eachplayer.socketID == winnerSocketId
+      );
       //increase player score
       player.points += 1;
       //save to mongo

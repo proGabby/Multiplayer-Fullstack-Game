@@ -77,20 +77,23 @@ class GameMethods {
       winner = '';
       showGameDialog(context, 'Draw');
     }
+    print("winner is ${winner}");
 
     if (winner != '') {
+      final roomData = Provider.of<RoomProvider>(context, listen: false);
       if (roomDataProvider.player1.playerType == winner) {
-        showGameDialog(context, '${roomDataProvider.player1.nickname} won!');
+        showGameDialog(context, '${roomData.player1.nickname} won!');
         //send message to the socket
+        print("inside winner socket, sockerId is ${roomData.player1.socketID}");
         socketClent.emit('winner', {
-          'winnerSocketId': roomDataProvider.player1.socketID,
-          'roomId': roomDataProvider.getRoomData['_id'],
+          'winnerSocketId': roomData.player1.socketID,
+          'roomId': roomData.getRoomData['_id'],
         });
       } else {
-        showGameDialog(context, '${roomDataProvider.player2.nickname} won!');
+        showGameDialog(context, '${roomData.player2.nickname} won!');
         socketClent.emit('winner', {
-          'winnerSocketId': roomDataProvider.player2.socketID,
-          'roomId': roomDataProvider.getRoomData['_id'],
+          'winnerSocketId': roomData.player2.socketID,
+          'roomId': roomData.getRoomData['_id'],
         });
       }
     }

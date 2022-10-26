@@ -10,7 +10,7 @@ roomSchema = new mongoose.Schema({
     type: Number,
     default: 6,
   },
-  CurrentRound: {
+  currentRound: {
     required: true,
     type: Number,
     default: 1,

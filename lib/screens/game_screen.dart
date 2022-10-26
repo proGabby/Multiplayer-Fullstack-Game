@@ -22,10 +22,13 @@ class _GameScreenState extends State<GameScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _socketMethod.updateRoomListener(context);
+    _socketMethod.joinRoomSuccessListener(context);
+    _socketMethod.errorOccuredListener(context);
     _socketMethod.updatePlayersStateListener(context);
-    _socketMethod.endGameListener(context);
+    print("inside join gamescreen initstate");
+    _socketMethod.updateRoomListener(context);
     _socketMethod.pointIncreaseListener(context);
+    _socketMethod.endGameListener(context);
   }
 
   @override
@@ -41,10 +44,10 @@ class _GameScreenState extends State<GameScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                const Scoreboard(),
+                Scoreboard(),
                 const TicTacToeBoard(),
                 Text(
-                    '${roomDataProvider.getRoomData['turn']['nickname']}\'s turn}'),
+                    '${roomDataProvider.getRoomData['turn']['nickname']}\'s turn'),
               ],
             )),
     );

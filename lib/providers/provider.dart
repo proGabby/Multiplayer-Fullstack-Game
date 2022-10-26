@@ -28,29 +28,29 @@ class RoomProvider extends ChangeNotifier {
   List<String> get displayElements => _displayElements;
   int get filledBoxes => _filledBoxes;
 
-  Player _player1 =
-      Player(nickname: "", socketID: "", points: 0, playerType: "X");
+  var _player1 = Player(nickname: "", socketID: "", points: 0, playerType: "X");
 
-  Player _player2 =
-      Player(nickname: "", socketID: "", points: 0, playerType: "O");
+  var _player2 = Player(nickname: "", socketID: "", points: 0, playerType: "O");
 
   Player get player1 => _player1;
   Player get player2 => _player2;
 
   Map<String, dynamic> get getRoomData => _roomData;
 
-  void updataRoomData(Map<String, dynamic> data) {
+  void updateRoomData(Map<String, dynamic> data) {
     _roomData = data;
     notifyListeners();
   }
 
   void updatePlayer1(Map<String, dynamic> player1Data) {
     _player1 = Player.fromMap(player1Data);
+    print("... player1 is ...$_player1");
     notifyListeners();
   }
 
   void updatePlayer2(Map<String, dynamic> player2Data) {
     _player2 = Player.fromMap(player2Data);
+    print(_player2);
     notifyListeners();
   }
 

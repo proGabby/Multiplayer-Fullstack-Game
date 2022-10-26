@@ -29,6 +29,7 @@ class _JoinRoomState extends State<JoinRoom> {
     _socketMethods.joinRoomSuccessListener(context);
     _socketMethods.errorOccuredListener(context);
     _socketMethods.updatePlayersStateListener(context);
+    print("inside join room initstate");
   }
 
   @override

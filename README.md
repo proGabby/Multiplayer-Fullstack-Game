@@ -1,16 +1,20 @@
-# multi_player_tictactoe
+# FullStack Multi-Player Game
 
-A new Flutter project.
+## FLUTTER, NODEJS, ExpressJs AND MONGODB
 
-## Getting Started
+## TECH
 
-This project is a starting point for a Flutter application.
+1. socket.io to make real-time communicate between players
+2. Http
+3. State Management with provider
+4. route Navigation with Go-router
 
-A few resources to get you started if this is your first Flutter project:
+## Starting Project
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. clone the github repo
+2. Ensure to add a private file on lib folder which will have your IP_ADDRESS
+3. run flutter clean and flutter pub get on the root of your project
+4. on a separate terminal, cd into the server folder
+5. inside your index.js file, change the constant variable DB to your own MONGODB connection url
+6. add a .env file and insert your password to mongo compass as DB_PASSWORD
+7. run npm init and npm run dev

@@ -23,7 +23,7 @@ class Scoreboard extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 6, 222, 139),
                 ),
               ),
               Text(
@@ -46,7 +46,7 @@ class Scoreboard extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 18, 37, 206),
                 ),
               ),
               Text(

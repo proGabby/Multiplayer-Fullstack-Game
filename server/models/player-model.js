@@ -12,6 +12,10 @@ const playerSchema = new mongoose.Schema({
     required: true,
     type: String,
   },
+  points: {
+    type: Number,
+    default: 0,
+  },
 });
 
 module.exports = playerSchema;

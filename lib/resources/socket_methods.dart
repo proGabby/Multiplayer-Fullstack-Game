@@ -26,7 +26,7 @@ class SocketMethods {
 
   void createRoomSuccessListener(BuildContext context) {
     _socketClient.on("createdRoomSuccess", (room) {
-      Provider.of<RoomProvider>(context, listen: false).updataRoomData(room);
+      Provider.of<RoomProvider>(context, listen: false).updateRoomData(room);
       context.go(GameScreen.routeName);
     });
   }
@@ -43,7 +43,7 @@ class SocketMethods {
 
   void joinRoomSuccessListener(BuildContext context) {
     _socketClient.on('joinRoomSuccess', (room) {
-      Provider.of<RoomProvider>(context, listen: false).updataRoomData(room);
+      Provider.of<RoomProvider>(context, listen: false).updateRoomData(room);
       context.go(GameScreen.routeName);
     });
   }
@@ -55,7 +55,7 @@ class SocketMethods {
   }
 
   void updatePlayersStateListener(BuildContext context) {
-    _socketClient.on("updataPlayer", (data) {
+    _socketClient.on("updatePlayers", (data) {
       Provider.of<RoomProvider>(context, listen: false).updatePlayer1(data[0]);
       Provider.of<RoomProvider>(context, listen: false).updatePlayer2(data[1]);
     });
@@ -64,7 +64,7 @@ class SocketMethods {
   //ensure the waiting screen refreshes to the game screen
   void updateRoomListener(BuildContext context) {
     _socketClient.on("updateRoom", (data) {
-      Provider.of<RoomProvider>(context, listen: false).updataRoomData(data);
+      Provider.of<RoomProvider>(context, listen: false).updateRoomData(data);
     });
   }
 
@@ -86,7 +86,7 @@ class SocketMethods {
       //update displays Elements
       roomProvider.updateDisplayElements(data['index'], data['choice']);
       //update room data
-      roomProvider.updataRoomData(data['room']);
+      roomProvider.updateRoomData(data['room']);
       //check for winner
       GameMethods().checkWinner(context, _socketClient);
     });
@@ -94,10 +94,8 @@ class SocketMethods {
 
   void pointIncreaseListener(BuildContext context) {
     //listen to the pointIncrease emmitter
-    _socketClient.on('pointIncrease', (playerData) {
-      final roomDataProvider =
-          Provider.of<RoomProvider>(context, listen: false);
-
+    _socketClient.on('pointsIncrease', (playerData) {
+      var roomDataProvider = Provider.of<RoomProvider>(context, listen: false);
       //update player data accordingly
       if (playerData['socketID'] == roomDataProvider.player1.socketID) {
         roomDataProvider.updatePlayer1(playerData);
